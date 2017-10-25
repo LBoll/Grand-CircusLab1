@@ -28,6 +28,8 @@ namespace GCLab1
                      return;
                 }
                 
+                //hello there
+
                 Console.Write("Please enter in the width of the rectangle: ");
                 string inputTwo = Console.ReadLine();
 
