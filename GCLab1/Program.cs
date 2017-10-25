@@ -10,61 +10,75 @@ namespace GCLab1
     {
         static void Main(string[] args)
         {
+            double l, h, w;
+            bool testNum = true;
+
+            while (testNum)
+            {
+                Console.Write("Please enter the Length of the rectangle: ");
+                l = DoubleVal();
+
+                Console.Write("Please enter the Width of the rectangle: ");
+                w = DoubleVal();
+
+                Console.Write("Please enter the Height of the rectangle: ");
+                h = DoubleVal();
+
+                //Lists of formulas
+                double area = w * l;
+                double perimeter = 2 * w + 2 * l;
+                double volume = l * w * h;
+
+                //Results for the user on what was asked for.
+                Console.WriteLine("The area of the room is: " + area);
+                Console.WriteLine("The perimeter of the room is: " + perimeter);
+                Console.WriteLine("The volume of the room is: " + volume);
+
+                bool validation = true;
+
+                Console.WriteLine("Would you like to continue? (y/n): ");
+
+                //Makes sure the user would like to continue
+                while (validation)
+                {
+                    string answer = Console.ReadLine();
+                    if (answer == "yes" || answer == "Yes" || answer == "y" || answer == "Y" || answer == "ya" || answer == "Ya")
+                    {
+                        testNum = true;
+                        validation = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Goodbye!");
+                        validation = false;
+                        return;
+                    }
+                }
+            }
+        }
+        //Checks to make sure the entered value is a correct measurment
+        private static double DoubleVal()
+        {
             while (true)
             {
-                Console.Write("Please enter in the length of the rectangle: ");
-                
-                double l;
-                bool valid = false;
+                string measurments = Console.ReadLine();
+                bool success = double.TryParse(measurments, out double doubleValue);
 
-                do
+                //Checks for positive numbers
+                if (doubleValue < 0)
                 {
-                    string inputOne = Console.ReadLine();
-
-                    bool success = double.TryParse(inputOne, out l);
-                    if (l < 0)
-                    {
-                        Console.WriteLine("Please enter a positive number! " );
-                    }
-
-                } while (!valid);
-                
-                //hello there
-
-                Console.Write("Please enter in the width of the rectangle: ");
-                string inputTwo = Console.ReadLine();
-
-                double w;
-                bool successw = double.TryParse(inputTwo, out w);
-
-                if (w < 0 )
-                {
-                    Console.WriteLine("Please enter a positive number! ");
-                    return;
+                    Console.WriteLine("That was not a positive number! ");
+                    success = false;
                 }
 
-                Console.Write("Please enter in the height of the rectangle: ");
-                string inputThree = Console.ReadLine();
-
-                double h;
-                bool successh = double.TryParse(inputThree, out h);
-
-                if (h < 0)
+                if (success)
                 {
-                    Console.WriteLine("Please enter a positive number! ");
-                    return;
+                    return doubleValue;
                 }
-
-                double area = (l * w);
-                Console.WriteLine("The area of the rectangle is: {0}", area);
-                double perimeter = 2 * (l + w);
-                Console.WriteLine("The perimeter of the rectangle is: {0}", perimeter);
-                double volume = (l * w * h);
-                Console.WriteLine("The volume of the rectangle is: {0}", volume);
-
-                Console.WriteLine("Would you like to continue? (Y/N): ");
-                string answer = Console.ReadLine();
-
+                else
+                {
+                    Console.Write("Make sure to enter a valid number! ");
+                }
             }
         }
     }
