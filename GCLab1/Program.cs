@@ -17,16 +17,20 @@ namespace GCLab1
             {
                 Console.Write("Please enter in the length of the rectangle: ");
                 
-                string inputOne = Console.ReadLine();
-
                 double l;
-                bool successl = double.TryParse(inputOne, out l);
-                
-                if (l < 0)
+                bool valid = false;
+
+                do
                 {
-                     Console.WriteLine("Please enter a positive number! ");
-                     return;
-                }
+                    string inputOne = Console.ReadLine();
+
+                    bool success = double.TryParse(inputOne, out l);
+                    if (l < 0)
+                    {
+                        Console.WriteLine("Please enter a positive number! " );
+                    }
+
+                } while (!valid);
                 
                 //hello there
 
@@ -48,7 +52,7 @@ namespace GCLab1
                 double h;
                 bool successh = double.TryParse(inputThree, out h);
 
-                if (h)
+                if (h < 0)
                 {
                     Console.WriteLine("Please enter a positive number! ");
                     return;
@@ -64,16 +68,7 @@ namespace GCLab1
                 Console.WriteLine("Would you like to continue? (Y/N): ");
                 string answer = Console.ReadLine();
 
-                while (true)
-                {
-                    if (answer == "yes" || answer = "y")
-                    {
-                        repeat = true
-                    }
-
-                }
             }
-            
         }
     }
 }
