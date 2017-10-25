@@ -8,9 +8,6 @@ namespace GCLab1
 {
     class Program
     {
-        double l, w, h;
-        bool repeat = true;
-
         static void Main(string[] args)
         {
             while (true)
